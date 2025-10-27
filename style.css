@@ -4,26 +4,23 @@
     box-sizing: border-box;
 }
 
-h1 {
-    color: #fff;
-    font-size: 5em;
-    font-family: 'poppins', sans-serif;
-    position: absolute;
-    top: 100px;
-    right: 250px;
-}
-img {
-    position: absolute;
-    left: 100px;
-    border-radius: 10px;
-}
-
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background: radial-gradient(#4c0c0c, #000);
+    overflow: hidden;
+}
+
+h1 {
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-size: 4em;
+    margin-bottom: 100px;
+    padding: 0 10px;
 }
 
 .container {
@@ -34,7 +31,6 @@ body {
     justify-content: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     -webkit-box-reflect: below 1px -webkit-linear-gradient(transparent, transparent, transparent, transparent, #0005);
-    margin-top: 200px;
 }
 
 .heart {
@@ -43,34 +39,28 @@ body {
     height: 300px;
 }
 
-.heart::before {
-    content: "";
-    position: absolute;
-    top: -100px;
-    left: 20px;
-    width: 200px;
-    height: 300px;
-    background: #6a1629;
-    border-top-left-radius: 100px;
-    border-top-right-radius: 100px;
-    rotate: 315deg;
-    z-index: 1000;
-    animation: animateHeart 2s steps(1) infinite;
-}
-
+.heart::before,
 .heart::after {
     content: "";
     position: absolute;
     top: -100px;
-    left: 92px;
     width: 200px;
     height: 300px;
     background: #6a1629;
     border-top-left-radius: 100px;
     border-top-right-radius: 100px;
-    rotate: 45deg;
     z-index: 1000;
     animation: animateHeart 2s steps(1) infinite;
+}
+
+.heart::before {
+    left: 20px;
+    rotate: 315deg;
+}
+
+.heart::after {
+    left: 92px;
+    rotate: 45deg;
 }
 
 @keyframes animateHeart {
@@ -137,5 +127,64 @@ body {
         top: 400px;
         opacity: 0;
         scale: 0;
+    }
+}
+
+/* 🌐 Responsivní design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+        margin-bottom: 80px;
+    }
+
+    .heart {
+        width: 200px;
+        height: 200px;
+    }
+
+    .heart::before,
+    .heart::after {
+        width: 130px;
+        height: 200px;
+        top: -70px;
+        border-top-left-radius: 70px;
+        border-top-right-radius: 70px;
+    }
+
+    .heart::before {
+        left: 10px;
+    }
+
+    .heart::after {
+        left: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+        margin-bottom: 80px;
+    }
+
+    .heart {
+        width: 150px;
+        height: 150px;
+    }
+
+    .heart::before,
+    .heart::after {
+        width: 100px;
+        height: 150px;
+        top: -50px;
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
+    }
+
+    .heart::before {
+        left: 8px;
+    }
+
+    .heart::after {
+        left: 45px;
     }
 }

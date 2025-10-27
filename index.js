@@ -4,16 +4,15 @@ function rain() {
     e.classList.add("drop");
     heart.appendChild(e);
 
-    let left = Math.floor(Math.random() * 300);
+    let left = Math.floor(Math.random() * heart.offsetWidth);
     let duration = Math.random() * 0.5;
 
     e.style.left = left + 'px';
-    e.style.animationDuration = 1+duration + 's';
+    e.style.animationDuration = 1 + duration + 's';
 
-    setTimeout(function () {
-        heart.removeChild(e);
-    },5000);
+    setTimeout(() => {
+        e.remove();
+    }, 5000);
 }
-setInterval(function () {
-    rain();
-},50);
+
+setInterval(rain, 50);
